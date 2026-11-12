@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>إلى نور ✨</title>
+
+  <!-- استدعاء خطوط عربية أنيقة (Cairo و Tajawal) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- مكتبة Tailwind CSS للتصميم المتجاوب -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            tajawal: ['Tajawal', 'sans-serif'],
+          },
+          colors: {
+            navyDeep: '#090d1a',
+            navyMid: '#0f172a',
+            purpleDeep: '#1e1035',
+            purpleRoyal: '#3b1578',
+            lilacSoft: '#e9d5ff',
+            lilacGlow: '#c084fc',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* ========================
+       الأساسيات والهوية البصرية
+       ======================== */
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+      background: radial-gradient(circle at 20% 20%, #2a1252 0%, #121633 45%, #080b16 100%);
+      color: #f8fafc;
+      user-select: none;
+    }
+
+    /* خلفية متدرجة ديناميكية ناعمة بين البنفسجي الداكن والكحلي */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #090d1a 0%, #141936 35%, #261247 70%, #0d1226 100%);
+    }
+
+    /* هالات إضاءة خلفية متحركة بنعومة */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(85px);
+      opacity: 0.45;
+      pointer-events: none;
+      animation: floatOrb 18s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 45vw;
+      height: 45vw;
+      max-width: 520px;
+      max-height: 520px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.55), rgba(76, 29, 149, 0.1));
+      top: -10%;
+      right: -8%;
+      animation-duration: 20s;
+    }
+
+    .orb-2 {
+      width: 50vw;
+      height: 50vw;
+      max-width: 560px;
+      max-height: 560px;
+      background: radial-gradient(circle, rgba(30, 58, 138, 0.65), rgba(15, 23, 42, 0.1));
+      bottom: -15%;
+      left: -10%;
+      animation-duration: 24s;
+      animation-delay: -5s;
+    }
+
+    .orb-3 {
+      width: 35vw;
+      height: 35vw;
+      max-width: 400px;
+      max-height: 400px;
+      background: radial-gradient(circle, rgba(192, 132, 252, 0.25), transparent);
+      top: 40%;
+      left: 30%;
+      animation-duration: 16s;
+      animation-delay: -3s;
+    }
+
+    @keyframes floatOrb {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(-25px, 20px) scale(1.07);
+      }
+      100% {
+        transform: translate(20px, -25px) scale(0.96);
+      }
+    }
+
+    /* نجوم وغبار ضوئي هادئ في الخلفية */
+    .stardust-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .star-dot {
+      position: absolute;
+      background: #f3e8ff;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle var(--dur, 4s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; transform: scale(0.8); }
+      50% { opacity: 0.75; transform: scale(1.2); box-shadow: 0 0 8px rgba(233, 213, 255, 0.8); }
+    }
+
+    /* ========================
+       تأثيرات الإضاءة والبطاقات
+       ======================== */
+    .purple-text-glow {
+      text-shadow:
+        0 0 18px rgba(192, 132, 252, 0.65),
+        0 0 42px rgba(139, 92, 246, 0.45),
+        0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .soft-text-glow {
+      text-shadow:
+        0 0 14px rgba(216, 180, 254, 0.4),
+        0 2px 8px rgba(0, 0, 0, 0.45);
+    }
+
+    .glass-card {
+      background: linear-gradient(145deg, rgba(24, 20, 52, 0.68), rgba(13, 19, 41, 0.78));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(216, 180, 254, 0.22);
+      box-shadow:
+        0 20px 50px rgba(4, 6, 16, 0.65),
+        0 0 35px rgba(139, 92, 246, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    /* ========================
+       الأزرار التفاعلية الأنيقة
+       ======================== */
+    .btn-primary-glow {
+      background: linear-gradient(135deg, #6d28d9 0%, #4c1d95 50%, #312e81 100%);
+      border: 1px solid rgba(233, 213, 255, 0.35);
+      box-shadow:
+        0 8px 25px rgba(109, 40, 217, 0.45),
+        0 0 20px rgba(192, 132, 252, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn-primary-glow:hover {
+      transform: translateY(-3px) scale(1.02);
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 50%, #3730a3 100%);
+      box-shadow:
+        0 12px 32px rgba(124, 58, 237, 0.6),
+        0 0 30px rgba(216, 180, 254, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-primary-glow:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .btn-yes {
+      background: linear-gradient(135deg, #7e22ce 0%, #9333ea 50%, #be185d 100%);
+      border: 1px solid rgba(245, 208, 254, 0.45);
+      box-shadow:
+        0 8px 28px rgba(147, 51, 234, 0.48),
+        0 0 24px rgba(236, 72, 153, 0.28);
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn-yes:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow:
+        0 14px 36px rgba(168, 85, 247, 0.65),
+        0 0 34px rgba(244, 114, 182, 0.45);
+    }
+
+    .btn-yes:active {
+      transform: scale(0.97);
+    }
+
+    .btn-no {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      box-shadow: 0 6px 20px rgba(2, 6, 23, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .btn-no:hover {
+      background: rgba(30, 41, 59, 0.8);
+      border-color: rgba(216, 180, 254, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .btn-no:active {
+      transform: scale(0.97);
+    }
+
+    /* ========================
+       انتقالات الصفحات (SPA)
+       ======================== */
+    .page-section {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(22px) scale(0.985);
+      transition:
+        opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0.85s;
+      pointer-events: none;
+    }
+
+    .page-section.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .page-section.exit-up {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-24px) scale(0.985);
+      pointer-events: none;
+    }
+
+    /* ظهور تدريجي للنصوص داخل الصفحة الثانية */
+    .apology-fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 1.3s ease-out, transform 1.3s ease-out;
+    }
+
+    .page-section.active .apology-fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .apology-btn-delay {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 1s ease-out 0.75s, transform 1s ease-out 0.75s;
+    }
+
+    .page-section.active .apology-btn-delay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================
+       قلوب الصفحة الثانية (بيضاء هادئة)
+       ======================== */
+    #apology-hearts-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #apology-hearts-layer.visible {
+      opacity: 1;
+    }
+
+    .floating-white-heart {
+      position: absolute;
+      bottom: -40px;
+      color: #ffffff;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.65));
+      animation: riseHeart linear forwards;
+      will-change: transform, opacity;
+    }
+
+    @keyframes riseHeart {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.85) rotate(0deg);
+        opacity: 0;
+      }
+      12% {
+        opacity: var(--max-opacity, 0.55);
+      }
+      50% {
+        transform: translateY(-52vh) translateX(var(--drift, 18px)) scale(1) rotate(8deg);
+      }
+      85% {
+        opacity: var(--max-opacity, 0.55);
+      }
+      100% {
+        transform: translateY(-112vh) translateX(calc(var(--drift, 18px) * -0.7)) scale(0.9) rotate(-8deg);
+        opacity: 0;
+      }
+    }
+
+    /* ========================
+       احتفالية القلوب (صفحة الموافقة)
+       ======================== */
+    #celebration-hearts-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 15;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .burst-heart {
+      position: absolute;
+      pointer-events: none;
+      will-change: transform, opacity;
+      animation: burstFly var(--duration, 3.2s) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes burstFly {
+      0% {
+        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      75% {
+        opacity: 0.92;
+      }
+      100% {
+        transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(var(--scale, 1.1)) rotate(var(--rot, 25deg));
+        opacity: 0;
+      }
+    }
+
+    .celebration-float-heart {
+      position: absolute;
+      bottom: -50px;
+      pointer-events: none;
+      will-change: transform, opacity;
+      animation: celebrationRise var(--duration, 6s) ease-in-out forwards;
+    }
+
+    @keyframes celebrationRise {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.7) rotate(0deg);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.95;
+      }
+      50% {
+        transform: translateY(-55vh) translateX(var(--sway, 30px)) scale(1.05) rotate(12deg);
+      }
+      100% {
+        transform: translateY(-115vh) translateX(calc(var(--sway, 30px) * -1)) scale(0.95) rotate(-12deg);
+        opacity: 0;
+      }
+    }
+
+    /* ========================
+       النافذة المنبثقة (Modal)
+       ======================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(6, 9, 20, 0.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      transform: scale(0.88) translateY(15px);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .modal-backdrop.open .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    /* ========================
+       مؤشر الموسيقى المتحرك
+       ======================== */
+    .eq-bar {
+      width: 3px;
+      height: 10px;
+      background: #e9d5ff;
+      border-radius: 99px;
+      transition: height 0.2s ease;
+    }
+
+    .music-playing .eq-bar:nth-child(1) {
+      animation: eqBounce 0.9s ease-in-out infinite alternate;
+    }
+    .music-playing .eq-bar:nth-child(2) {
+      animation: eqBounce 0.65s ease-in-out infinite alternate 0.2s;
+    }
+    .music-playing .eq-bar:nth-child(3) {
+      animation: eqBounce 0.8s ease-in-out infinite alternate 0.4s;
+    }
+
+    .music-paused .eq-bar {
+      height: 4px !important;
+      opacity: 0.6;
+    }
+
+    @keyframes eqBounce {
+      0% { height: 4px; }
+      100% { height: 15px; }
+    }
+
+    /* نبضة خفيفة للقلب */
+    .heart-pulse {
+      display: inline-block;
+      animation: gentleBeat 2.2s ease-in-out infinite;
+    }
+
+    @keyframes gentleBeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.14); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.1); }
+      60% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- الخلفية المتدرجة والهالات الضوئية -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- طبقة النجوم والغبار الضوئي -->
+  <div id="stardust" class="stardust-layer" aria-hidden="true"></div>
+
+  <!-- طبقة القلوب البيضاء الهادئة الخاصة بالصفحة الثانية -->
+  <div id="apology-hearts-layer" aria-hidden="true"></div>
+
+  <!-- طبقة القلوب الاحتفالية الخاصة بالصفحة الثالثة -->
+  <div id="celebration-hearts-layer" aria-hidden="true"></div>
+
+  <!-- زر التحكم بالموسيقى الهادئة في الزاوية العلوية -->
+  <header class="fixed top-4 right-4 sm:top-6 sm:right-6 z-40 flex items-center gap-2.5">
+    <button
+      id="music-toggle-btn"
+      type="button"
+      aria-label="تشغيل أو إيقاف الموسيقى"
+      class="music-paused glass-card px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-purple-100 hover:border-purple-300/50 transition-all duration-300 shadow-lg cursor-pointer"
+    >
+      <div class="flex items-end gap-0.5 h-4" aria-hidden="true">
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+      </div>
+      <span id="music-status-text">تشغيل الموسيقى</span>
+    </button>
+
+    <!-- تلميح لطيف يظهر فقط إذا منع المتصفح التشغيل التلقائي للصوت -->
+    <div
+      id="audio-hint-badge"
+      class="hidden sm:flex items-center gap-1.5 bg-purple-950/80 border border-purple-400/30 text-purple-200 text-xs px-3 py-1.5 rounded-full shadow-md backdrop-blur-md transition-opacity duration-500"
+    >
+      <span>اضغطي لتشغيل الموسيقى الهادئة 🎹</span>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       الصفحة الأولى: صفحة الترحيب
+       ========================================== -->
+  <main id="page-1" class="page-section active" role="region" aria-label="صفحة الترحيب">
+    <div class="w-full max-w-xl mx-auto text-center flex flex-col items-center justify-center px-4">
+      <!-- لمسة زخرفية ناعمة جداً -->
+      <div class="mb-4 text-purple-300/75 text-sm sm:text-base tracking-widest font-tajawal">
+        ✨ رسالة من القلب ✨
+      </div>
+
+      <!-- العبارة الرئيسية المطلوبة في منتصف الشاشة تماماً -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white purple-text-glow leading-tight mb-8 sm:mb-10">
+        أهلاً نور
+      </h1>
+
+      <!-- زر الانتقال إلى المفاجأة -->
+      <button
+        id="btn-to-page-2"
+        type="button"
+        class="btn-primary-glow px-8 py-3.5 sm:px-10 sm:py-4 rounded-full text-base sm:text-lg font-bold text-white tracking-wide cursor-pointer"
+      >
+        انتقلي إلى المفاجأة
+      </button>
+    </div>
+  </main>
+
+  <!-- ==========================================
+       الصفحة الثانية: رسالة الاعتذار
+       ========================================== -->
+  <section id="page-2" class="page-section" role="region" aria-label="رسالة الاعتذار">
+    <div class="w-full max-w-2xl mx-auto px-3 sm:px-6 flex flex-col items-center justify-center">
+      <!-- بطاقة زجاجية أنيقة تحافظ على وضوح النص وسط القلوب البيضاء -->
+      <div class="glass-card rounded-3xl p-7 sm:p-11 md:p-12 text-center relative overflow-hidden w-full">
+        <!-- خط إضاءة علوي ناعم -->
+        <div class="w-16 h-1 bg-gradient-to-r from-transparent via-purple-300/60 to-transparent mx-auto mb-6 rounded-full"></div>
+
+        <!-- نص الاعتذار بالصياغة الدقيقة المطلوبة -->
+        <p class="apology-fade-in text-lg sm:text-2xl md:text-[1.65rem] font-medium text-slate-50 leading-loose sm:leading-[2.2] soft-text-glow">
+          بعرف إني زعلتك يا نور، وأدري شايلة بخاطرك مني، وحقك أبداً ما ألومك. أنا غلطت وأتحمل غلطي، وأوعدك ما تشوفي مني أي غلط مرة ثانية، وبعمري ما برجع أزعلك يا نظر عيني.
+        </p>
+
+        <!-- خط إضاءة سفلي ناعم -->
+        <div class="w-16 h-1 bg-gradient-to-r from-transparent via-purple-300/40 to-transparent mx-auto mt-7 mb-2 rounded-full"></div>
+      </div>
+
+      <!-- زر الانتقال إلى الصفحة الثالثة في أسفل الصفحة -->
+      <div class="mt-7 sm:mt-9 apology-btn-delay">
+        <button
+          id="btn-to-page-3"
+          type="button"
+          class="btn-primary-glow px-8 py-3 sm:px-10 sm:py-3.5 rounded-full text-base sm:text-lg font-bold text-white cursor-pointer"
+        >
+          الصفحة التالية
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       الصفحة الثالثة: السؤال المنتظر
+       ========================================== -->
+  <section id="page-3" class="page-section" role="region" aria-label="السؤال المنتظر">
+    <div class="w-full max-w-xl mx-auto px-4 text-center flex flex-col items-center justify-center">
+      <!-- حاوية السؤال والأزرار (تختفي بنعومة عند اختيار "رضيت") -->
+      <div id="question-container" class="w-full transition-all duration-700 ease-out">
+        <h2 class="text-3xl sm:text-5xl md:text-[3.25rem] font-extrabold text-white purple-text-glow leading-snug mb-9 sm:mb-12">
+          رضيتي يا دنية أيهم؟؟
+        </h2>
+
+        <!-- خياران على شكل زرين منفصلين -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-md mx-auto">
+          <button
+            id="btn-yes"
+            type="button"
+            class="btn-yes w-full sm:w-auto sm:min-w-[170px] px-8 py-3.5 sm:py-4 rounded-full text-lg sm:text-xl font-bold text-white cursor-pointer"
+          >
+            رضيت ❤️
+          </button>
+
+          <button
+            id="btn-no"
+            type="button"
+            class="btn-no w-full sm:w-auto sm:min-w-[170px] px-8 py-3.5 sm:py-4 rounded-full text-lg sm:text-xl font-semibold text-slate-200 cursor-pointer"
+          >
+            ما رضيت 💔
+          </button>
+        </div>
+      </div>
+
+      <!-- رسالة النجاح التي تظهر بتأثير Fade-in بعد الضغط على "رضيت" -->
+      <div
+        id="success-message-container"
+        class="hidden opacity-0 transform translate-y-4 transition-all duration-1000 ease-out w-full"
+      >
+        <div class="glass-card rounded-3xl p-8 sm:p-12 text-center border-purple-300/40 shadow-2xl">
+          <div class="text-4xl sm:text-5xl mb-5 heart-pulse">❤️</div>
+          <p class="text-2xl sm:text-3xl md:text-4xl font-bold text-white purple-text-glow leading-relaxed">
+            أحلى خبر سمعته اليوم، ربي لا يحرمني منك يا نور ❤️
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       النافذة المنبثقة عند الضغط على "ما رضيت"
+       ========================================== -->
+  <div
+    id="not-forgiven-modal"
+    class="modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+    <div class="modal-box glass-card rounded-3xl p-7 sm:p-9 max-w-sm w-full text-center relative border-purple-300/35">
+      <p id="modal-title" class="text-xl sm:text-2xl font-bold text-white soft-text-glow mb-6 leading-relaxed">
+        الخيار غير متوفر حالياً❤️
+      </p>
+
+      <button
+        id="btn-close-modal"
+        type="button"
+        class="btn-primary-glow px-7 py-2.5 rounded-full text-sm sm:text-base font-bold text-white cursor-pointer"
+      >
+        إغلاق
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       المنطق البرمجي التفاعلي والموسيقى الهادئة
+       ========================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---------------------------------------------------
+         1. توليد النجوم والغبار الضوئي في الخلفية
+         --------------------------------------------------- */
+      function initStardust() {
+        const container = document.getElementById('stardust');
+        if (!container) return;
+        const count = window.innerWidth < 640 ? 22 : 38;
+        const fragment = document.createDocumentFragment();
+
+        for (let i = 0; i < count; i++) {
+          const star = document.createElement('span');
+          star.className = 'star-dot';
+          const size = (Math.random() * 2.2 + 1).toFixed(1);
+          star.style.width = size + 'px';
+          star.style.height = size + 'px';
+          star.style.top = (Math.random() * 100).toFixed(2) + '%';
+          star.style.left = (Math.random() * 100).toFixed(2) + '%';
+          star.style.setProperty('--dur', (Math.random() * 4 + 3).toFixed(2) + 's');
+          star.style.setProperty('--delay', (Math.random() * 5).toFixed(2) + 's');
+          fragment.appendChild(star);
+        }
+        container.appendChild(fragment);
+      }
+
+      /* ---------------------------------------------------
+         2. محرك الموسيقى الهادئة (Romantic Piano Synthesizer)
+            يعمل عبر Web Audio API بصوت بيانو دافئ ومنخفض
+            دون الحاجة لأي روابط خارجية قد تتعطل، مع احترام
+            سياسات المتصفح للتشغيل التلقائي.
+         --------------------------------------------------- */
+      class RomanticPianoPlayer {
+        constructor() {
+          this.ctx = null;
+          this.masterGain = null;
+          this.isPlaying = false;
+          this.userManuallyPaused = false;
+          this.stepIndex = 0;
+          this.schedulerTimer = null;
+
+          // مقطوعة بيانو رومانسية هادئة (تتابع كوردات: Am - F - C - G)
+          // الترددات بالهرتز (Hz) لنغمات دافئة وناعمة
+          this.melodyNotes = [
+            // Am (A3, C4, E4, A4, E4, C4)
+            220.00, 261.63, 329.63, 440.00, 329.63, 261.63,
+            // Fmaj7 (F3, A3, C4, E4, C4, A3)
+            174.61, 220.00, 261.63, 329.63, 261.63, 220.00,
+            // C (C3, G3, C4, E4, G4, E4)
+            130.81, 196.00, 261.63, 329.63, 392.00, 329.63,
+            // G (G3, B3, D4, G4, D4, B3)
+            196.00, 246.94, 293.66, 392.00, 293.66, 246.94
+          ];
+
+          // نغمات باس خفيفة ترافق بداية كل كورد
+          this.bassNotes = {
+            0: 110.00,  // A2
+            6: 87.31,   // F2
+            12: 130.81, // C3
+            18: 98.00   // G2
+          };
+        }
+
+        initContext() {
+          if (!this.ctx) {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return false;
+            this.ctx = new AudioCtx();
+
+            // التحكم الرئيسي بمستوى الصوت (منخفض ومريح للأذن)
+            this.masterGain = this.ctx.createGain();
+            this.masterGain.gain.setValueAtTime(0.16, this.ctx.currentTime);
+
+            // إضافة صدى ناعم (Delay + Feedback) لمحاكاة بيانو في غرفة دافئة
+            this.delayNode = this.ctx.createDelay();
+            this.delayNode.delayTime.value = 0.38;
+
+            this.feedbackGain = this.ctx.createGain();
+            this.feedbackGain.gain.value = 0.28;
+
+            this.delayFilter = this.ctx.createBiquadFilter();
+            this.delayFilter.type = 'lowpass';
+            this.delayFilter.frequency.value = 950;
+
+            this.delayNode.connect(this.feedbackGain);
+            this.feedbackGain.connect(this.delayFilter);
+            this.delayFilter.connect(this.delayNode);
+
+            this.masterGain.connect(this.ctx.destination);
+            this.delayNode.connect(this.masterGain);
+          }
+          return true;
+        }
+
+        playSoftPianoNote(freq, duration = 2.4, velocity = 0.32) {
+          if (!this.ctx || !this.isPlaying) return;
+          const now = this.ctx.currentTime;
+
+          // مذبذب أساسي دافئ (Triangle) + توافقي ناعم (Sine)
+          const osc1 = this.ctx.createOscillator();
+          const osc2 = this.ctx.createOscillator();
+          const noteGain = this.ctx.createGain();
+          const filter = this.ctx.createBiquadFilter();
+
+          osc1.type = 'triangle';
+          osc1.frequency.setValueAtTime(freq, now);
+
+          osc2.type = 'sine';
+          osc2.frequency.setValueAtTime(freq * 2, now); // أوكتاف علوي خفيف جداً
+
+          const harmonicGain = this.ctx.createGain();
+          harmonicGain.gain.setValueAtTime(0.08, now);
+
+          // فلتر لتنعيم الصوت وإزالة أي حدة
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(1100, now);
+          filter.frequency.exponentialRampToValueAtTime(380, now + duration);
+
+          // غلاف الصوت (Attack ناعم جداً + Decay طويل كالبيانو)
+          noteGain.gain.setValueAtTime(0.0001, now);
+          noteGain.gain.linearRampToValueAtTime(velocity, now + 0.06);
+          noteGain.gain.exponentialRampToValueAtTime(0.0008, now + duration);
+
+          osc1.connect(filter);
+          osc2.connect(harmonicGain);
+          harmonicGain.connect(filter);
+
+          filter.connect(noteGain);
+          noteGain.connect(this.masterGain);
+          noteGain.connect(this.delayNode);
+
+          osc1.start(now);
+          osc2.start(now);
+          osc1.stop(now + duration + 0.05);
+          osc2.stop(now + duration + 0.05);
+        }
+
+        scheduleNextNote() {
+          if (!this.isPlaying) return;
+
+          const idx = this.stepIndex % this.melodyNotes.length;
+          const freq = this.melodyNotes[idx];
+
+          // عزف نغمة اللحن
+          this.playSoftPianoNote(freq, 2.6, 0.28);
+
+          // عزف نغمة الباس الدافئة عند بداية كل كورد
+          if (this.bassNotes[idx]) {
+            this.playSoftPianoNote(this.bassNotes[idx], 3.8, 0.22);
+          }
+
+          this.stepIndex++;
+          // إيقاع بطيء وهادئ (نغمة كل 620 مللي ثانية)
+          this.schedulerTimer = setTimeout(() => this.scheduleNextNote(), 620);
+        }
+
+        async start(isAutoAttempt = false) {
+          if (!this.initContext()) return false;
+
+          try {
+            if (this.ctx.state === 'suspended') {
+              await this.ctx.resume();
+            }
+
+            if (this.ctx.state === 'running') {
+              if (!this.isPlaying) {
+                this.isPlaying = true;
+                this.scheduleNextNote();
+              }
+              updateMusicUI(true);
+              hideAudioHint();
+              return true;
+            } else {
+              if (isAutoAttempt) showAudioHint();
+              return false;
+            }
+          } catch (err) {
+            if (isAutoAttempt) showAudioHint();
+            return false;
+          }
+        }
+
+        pause() {
+          this.isPlaying = false;
+          if (this.schedulerTimer) {
+            clearTimeout(this.schedulerTimer);
+            this.schedulerTimer = null;
+          }
+          updateMusicUI(false);
+        }
+
+        async toggle() {
+          if (this.isPlaying) {
+            this.userManuallyPaused = true;
+            this.pause();
+          } else {
+            this.userManuallyPaused = false;
+            await this.start(false);
+          }
+        }
+      }
+
+      const piano = new RomanticPianoPlayer();
+      const musicBtn = document.getElementById('music-toggle-btn');
+      const musicStatusText = document.getElementById('music-status-text');
+      const audioHintBadge = document.getElementById('audio-hint-badge');
+
+      function updateMusicUI(playing) {
+        if (playing) {
+          musicBtn.classList.remove('music-paused');
+          musicBtn.classList.add('music-playing');
+          musicStatusText.textContent = 'إيقاف الموسيقى';
+        } else {
+          musicBtn.classList.remove('music-playing');
+          musicBtn.classList.add('music-paused');
+          musicStatusText.textContent = 'تشغيل الموسيقى';
+        }
+      }
+
+      function showAudioHint() {
+        if (audioHintBadge) {
+          audioHintBadge.classList.remove('hidden');
+        }
+      }
+
+      function hideAudioHint() {
+        if (audioHintBadge) {
+          audioHintBadge.classList.add('hidden');
+        }
+      }
+
+      musicBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        piano.toggle();
+      });
+
+      // محاولة التشغيل التلقائي عند الدخول، وفي حال منعه المتصفح يتم التشغيل عند أول تفاعل
+      window.addEventListener('load', async () => {
+        initStardust();
+        const started = await piano.start(true);
+        if (!started) {
+          const unlockAudio = async () => {
+            if (!piano.userManuallyPaused && !piano.isPlaying) {
+              await piano.start(false);
+            }
+            document.removeEventListener('click', unlockAudio);
+            document.removeEventListener('touchstart', unlockAudio);
+          };
+          document.addEventListener('click', unlockAudio, { passive: true });
+          document.addEventListener('touchstart', unlockAudio, { passive: true });
+        }
+      });
+
+      /* ---------------------------------------------------
+         3. التنقل السلس بين الصفحات الثلاث (SPA)
+         --------------------------------------------------- */
+      const page1 = document.getElementById('page-1');
+      const page2 = document.getElementById('page-2');
+      const page3 = document.getElementById('page-3');
+      const apologyHeartsLayer = document.getElementById('apology-hearts-layer');
+
+      let apologyHeartsInterval = null;
+
+      function goToPage(fromPage, toPage) {
+        fromPage.classList.remove('active');
+        fromPage.classList.add('exit-up');
+
+        setTimeout(() => {
+          toPage.classList.add('active');
+        }, 180);
+      }
+
+      // الانتقال من الصفحة الأولى إلى الثانية
+      document.getElementById('btn-to-page-2').addEventListener('click', async () => {
+        if (!piano.userManuallyPaused && !piano.isPlaying) {
+          await piano.start(false);
+        }
+        goToPage(page1, page2);
+        startApologyWhiteHearts();
+      });
+
+      // الانتقال من الصفحة الثانية إلى الثالثة
+      document.getElementById('btn-to-page-3').addEventListener('click', () => {
+        stopApologyWhiteHearts();
+        goToPage(page2, page3);
+      });
+
+      /* ---------------------------------------------------
+         4. قلوب الصفحة الثانية (قلوب بيضاء صغيرة هادئة)
+         --------------------------------------------------- */
+      function spawnWhiteHeart() {
+        if (!apologyHeartsLayer) return;
+
+        const heart = document.createElement('div');
+        heart.className = 'floating-white-heart';
+        // استخدام SVG قلب أبيض نقي وناعم
+        const size = Math.floor(Math.random() * 14) + 12; // بين 12px و 26px
+        heart.innerHTML = `
+          <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.9)">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        `;
+
+        const leftPos = Math.random() * 94 + 3; // من 3% إلى 97%
+        const duration = (Math.random() * 5 + 7.5).toFixed(2); // حركة بطيئة 7.5 إلى 12.5 ثانية
+        const drift = (Math.random() * 50 - 25).toFixed(1) + 'px';
+        const maxOpacity = (Math.random() * 0.35 + 0.35).toFixed(2); // شفافية مريحة لا تغطي النص
+
+        heart.style.left = leftPos + '%';
+        heart.style.animationDuration = duration + 's';
+        heart.style.setProperty('--drift', drift);
+        heart.style.setProperty('--max-opacity', maxOpacity);
+
+        apologyHeartsLayer.appendChild(heart);
+
+        setTimeout(() => {
+          if (heart.parentNode) {
+            heart.parentNode.removeChild(heart);
+          }
+        }, parseFloat(duration) * 1000 + 200);
+      }
+
+      function startApologyWhiteHearts() {
+        apologyHeartsLayer.classList.add('visible');
+        // دفعة أولى لطيفة ومتباعدة
+        for (let i = 0; i < 6; i++) {
+          setTimeout(spawnWhiteHeart, i * 450);
+        }
+        // استمرار ظهور القلوب بهدوء دون ازدحام
+        apologyHeartsInterval = setInterval(spawnWhiteHeart, 850);
+      }
+
+      function stopApologyWhiteHearts() {
+        apologyHeartsLayer.classList.remove('visible');
+        if (apologyHeartsInterval) {
+          clearInterval(apologyHeartsInterval);
+          apologyHeartsInterval = null;
+        }
+      }
+
+      /* ---------------------------------------------------
+         5. التفاعل مع السؤال في الصفحة الثالثة
+         --------------------------------------------------- */
+      const btnYes = document.getElementById('btn-yes');
+      const btnNo = document.getElementById('btn-no');
+      const questionContainer = document.getElementById('question-container');
+      const successMessageContainer = document.getElementById('success-message-container');
+      const celebrationLayer = document.getElementById('celebration-hearts-layer');
+
+      const modal = document.getElementById('not-forgiven-modal');
+      const btnCloseModal = document.getElementById('btn-close-modal');
+
+      // ألوان القلوب الاحتفالية (أبيض، بنفسجي، وردي)
+      const celebrationColors = [
+        '#ffffff', // أبيض
+        '#f3e8ff', // أبيض ليلكي
+        '#c084fc', // بنفسجي ناعم
+        '#a855f7', // بنفسجي مشرق
+        '#f472b6', // وردي ناعم
+        '#ec4899'  // وردي دافئ
+      ];
+
+      function createHeartSVG(color, size) {
+        return `
+          <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}" style="filter: drop-shadow(0 0 8px ${color}88);">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        `;
+      }
+
+      // تأثير انفجار القلوب (Heart Burst) من نقاط متعددة
+      function triggerHeartBurst(originXPercent, originYPercent, count = 28) {
+        const fragment = document.createDocumentFragment();
+
+        for (let i = 0; i < count; i++) {
+          const heart = document.createElement('div');
+          heart.className = 'burst-heart';
+
+          const color = celebrationColors[Math.floor(Math.random() * celebrationColors.length)];
+          const size = Math.floor(Math.random() * 20) + 14;
+          heart.innerHTML = createHeartSVG(color, size);
+
+          const angle = (Math.PI * 2 * i) / count + (Math.random() * 0.4 - 0.2);
+          const distance = Math.random() * 260 + 90;
+          const tx = Math.cos(angle) * distance;
+          const ty = Math.sin(angle) * distance - 40;
+          const duration = (Math.random() * 1.4 + 2.2).toFixed(2) + 's';
+          const rot = (Math.random() * 70 - 35).toFixed(0) + 'deg';
+          const scale = (Math.random() * 0.6 + 0.8).toFixed(2);
+
+          heart.style.left = originXPercent + '%';
+          heart.style.top = originYPercent + '%';
+          heart.style.setProperty('--tx', tx.toFixed(1) + 'px');
+          heart.style.setProperty('--ty', ty.toFixed(1) + 'px');
+          heart.style.setProperty('--duration', duration);
+          heart.style.setProperty('--rot', rot);
+          heart.style.setProperty('--scale', scale);
+
+          fragment.appendChild(heart);
+
+          setTimeout(() => {
+            if (heart.parentNode) heart.parentNode.removeChild(heart);
+          }, parseFloat(duration) * 1000 + 100);
+        }
+
+        celebrationLayer.appendChild(fragment);
+      }
+
+      // قلوب احتفالية متصاعدة باستمرار بعد الموافقة
+      function spawnCelebrationRisingHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'celebration-float-heart';
+
+        const color = celebrationColors[Math.floor(Math.random() * celebrationColors.length)];
+        const size = Math.floor(Math.random() * 18) + 14;
+        heart.innerHTML = createHeartSVG(color, size);
+
+        const left = Math.random() * 96 + 2;
+        const duration = (Math.random() * 3.5 + 4.5).toFixed(2) + 's';
+        const sway = (Math.random() * 70 - 35).toFixed(1) + 'px';
+
+        heart.style.left = left + '%';
+        heart.style.setProperty('--duration', duration);
+        heart.style.setProperty('--sway', sway);
+
+        celebrationLayer.appendChild(heart);
+
+        setTimeout(() => {
+          if (heart.parentNode) heart.parentNode.removeChild(heart);
+        }, parseFloat(duration) * 1000 + 100);
+      }
+
+      let celebrationStarted = false;
+
+      // الحالة الأولى: عند الضغط على زر "رضيت ❤️"
+      btnYes.addEventListener('click', () => {
+        if (celebrationStarted) return;
+        celebrationStarted = true;
+
+        // إطلاق انفجارات قلوب متعددة من أماكن مختلفة
+        triggerHeartBurst(50, 52, 36);
+        setTimeout(() => triggerHeartBurst(28, 42, 24), 250);
+        setTimeout(() => triggerHeartBurst(72, 42, 24), 400);
+        setTimeout(() => triggerHeartBurst(50, 35, 28), 650);
+
+        // ملء الشاشة بقلوب متحركة بيضاء وبنفسجية ووردية
+        for (let i = 0; i < 18; i++) {
+          setTimeout(spawnCelebrationRisingHeart, i * 140);
+        }
+        setInterval(spawnCelebrationRisingHeart, 320);
+
+        // إخفاء السؤال وإظهار رسالة الفرح بتأثير Fade-in ناعم
+        questionContainer.style.opacity = '0';
+        questionContainer.style.transform = 'translateY(-14px) scale(0.97)';
+
+        setTimeout(() => {
+          questionContainer.classList.add('hidden');
+          successMessageContainer.classList.remove('hidden');
+
+          // تفعيل الانتقال السلس (Fade-in)
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              successMessageContainer.classList.remove('opacity-0', 'translate-y-4');
+              successMessageContainer.classList.add('opacity-100', 'translate-y-0');
+            });
+          });
+        }, 550);
+      });
+
+      // الحالة الثانية: عند الضغط على زر "ما رضيت 💔"
+      btnNo.addEventListener('click', () => {
+        modal.classList.add('open');
+      });
+
+      // إغلاق النافذة المنبثقة للعودة للسؤال
+      btnCloseModal.addEventListener('click', () => {
+        modal.classList.remove('open');
+      });
+
+      // إغلاق النافذة عند الضغط خارج الصندوق أيضاً
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('open');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
